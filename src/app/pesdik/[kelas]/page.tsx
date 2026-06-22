@@ -1,6 +1,5 @@
 'use client';
 import { useEffect, useState } from 'react';
-import PropTypes from 'prop-types';
 import { Footer } from '../../components/Footer';
 import { Header } from '../../components/Header';
 import { SearchBar } from '../../components/SearchBar';
