@@ -2,7 +2,6 @@
 import { ErrorDisplay } from './components/ErrorDisplay';
 
 export default function Error({
-	error,
 	reset,
 }: {
 	error: Error & { digest?: string };
