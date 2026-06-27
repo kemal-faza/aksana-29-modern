@@ -1,13 +1,13 @@
 'use client';
 import Image from 'next/image';
-import { getTeachers } from '../../../lib/firebase';
-import { Footer } from '../components/Footer';
-import { Header } from '../components/Header';
-import { SearchBar } from '../components/SearchBar';
+import { getTeachers } from '@/lib/firebase';
+import { Footer } from '@/app/components/Footer';
+import { Header } from '@/app/components/Header';
+import { SearchBar } from '@/app/components/SearchBar';
 import { useEffect, useRef, useState } from 'react';
-import { Teacher } from '../../../lib/types';
-import LoadingScreen from '../components/LoadingScreen';
-import { ensureArray } from '../../../lib/utils';
+import { Teacher } from '@/lib/types';
+import LoadingScreen from '@/app/components/LoadingScreen';
+import { ensureArray } from '@/lib/utils';
 
 const IMAGE_SIZES_ATTR =
 	'(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw';

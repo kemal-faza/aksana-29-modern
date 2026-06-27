@@ -13,3 +13,11 @@ export interface Student {
 	kelas: string;
 	jabatan?: string;
 }
+
+export interface Sambutan {
+	id: number;
+	nama: string;
+	image: string;
+	isi: string;
+	urutan: number;
+}

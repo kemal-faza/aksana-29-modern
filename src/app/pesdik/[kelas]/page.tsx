@@ -1,14 +1,14 @@
 'use client';
 import { useEffect, useState } from 'react';
-import { Footer } from '../../components/Footer';
-import { Header } from '../../components/Header';
-import { SearchBar } from '../../components/SearchBar';
-import { getStudents, getTeachers } from '../../../../lib/firebase';
-import { Teacher, Student } from '../../../../lib/types';
+import { Footer } from '@/app/components/Footer';
+import { Header } from '@/app/components/Header';
+import { SearchBar } from '@/app/components/SearchBar';
+import { getStudents, getTeachers } from '@/lib/firebase';
+import { Teacher, Student } from '@/lib/types';
 import { useParams } from 'next/navigation';
-import LoadingScreen from '../../components/LoadingScreen';
-import { ErrorDisplay } from '../../components/ErrorDisplay';
-import { ensureArray } from '../../../../lib/utils';
+import LoadingScreen from '@/app/components/LoadingScreen';
+import { ErrorDisplay } from '@/app/components/ErrorDisplay';
+import { ensureArray } from '@/lib/utils';
 import Image from 'next/image';
 
 const IMAGE_SIZES_ATTR =

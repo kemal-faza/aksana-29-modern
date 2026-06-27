@@ -1,6 +1,6 @@
-import { Footer } from '../components/Footer';
-import { Header } from '../components/Header';
-import { LazyVideo } from '../components/LazyVideo';
+import { Footer } from '@/app/components/Footer';
+import { Header } from '@/app/components/Header';
+import { LazyVideo } from '@/app/components/LazyVideo';
 
 export default function Gallery() {
 	return (

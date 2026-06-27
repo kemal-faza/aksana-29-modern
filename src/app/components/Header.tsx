@@ -3,7 +3,7 @@ import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { useEffect, useState } from 'react';
 import { ChevronDown } from 'react-feather';
-import { cn } from '../../../lib/utils';
+import { cn } from '@/lib/utils';
 
 const CLASSES = [
 	'XII IPA 1',
