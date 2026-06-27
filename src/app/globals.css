@@ -2,6 +2,13 @@
 @tailwind components;
 @tailwind utilities;
 
+:root {
+	--color-primary: #065f46;
+	--color-secondary: #f5f5f5;
+	--color-tertiary: #e5ba73;
+	--color-dark: #171717;
+}
+
 #hamburger.active > span:first-child {
 	@apply -rotate-45;
 }
@@ -45,4 +52,13 @@ img {
 .cv-auto {
 	content-visibility: auto;
 	contain-intrinsic-size: 1px 1200px;
+}
+
+.sambutan-swiper {
+	--swiper-navigation-color: var(--color-tertiary);
+	--swiper-navigation-size: 22px;
+	--swiper-pagination-color: var(--color-tertiary);
+	--swiper-pagination-bullet-active-color: var(--color-tertiary);
+	--swiper-pagination-bullet-inactive-color: rgba(255, 255, 255, 0.35);
+	--swiper-pagination-bottom: 0rem;
 }
