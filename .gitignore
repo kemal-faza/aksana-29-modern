@@ -32,3 +32,6 @@ next-env.d.ts
 
 # Vite
 dist/
+
+# Plan file (local only, jangan dicommit)
+PLAN.md

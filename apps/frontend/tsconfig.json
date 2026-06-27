@@ -25,11 +25,13 @@
 			}
 		],
 		"paths": {
-			"@/*": ["./src/*"]
+			"@/*": ["./src/*"],
+			"@aksana/shared": ["../../packages/shared/src/index.ts"],
+			"@aksana/shared/*": ["../../packages/shared/src/*"]
 		}
 	},
 	"include": [
-		"./src",
+		"apps/frontend/src",
 		"./dist/types/**/*.ts",
 		"./next-env.d.ts",
 		".next/types/**/*.ts",
