@@ -11,8 +11,9 @@
 		"dev": "concurrently -n fe,be -c green,cyan 'pnpm dev:fe' 'pnpm dev:be'",
 		"dev:fe": "pnpm --filter @aksana/frontend run dev",
 		"dev:be": "pnpm --filter @aksana/backend run dev",
-		"build:fe": "pnpm --filter @aksana/frontend run dev",
-		"build:be": "pnpm --filter @aksana/backend run dev",
+		"build": "pnpm -r run build",
+		"build:fe": "pnpm --filter @aksana/frontend run build",
+		"build:be": "pnpm --filter @aksana/backend run build",
 		"lint": "pnpm -r run lint"
 	},
 	"devDependencies": {

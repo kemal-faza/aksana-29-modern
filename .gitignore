@@ -35,3 +35,11 @@ dist/
 
 # Plan file (local only, jangan dicommit)
 PLAN.md
+
+# Backend secrets
+apps/backend/.env
+apps/backend/.env.local
+apps/backend/data/
+**/sa.json
+**/service-account*.json
+**/firebase-adminsdk*.json
