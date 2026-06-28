@@ -3,7 +3,7 @@ import { useEffect, useState } from 'react';
 import { Footer } from '@/app/components/Footer';
 import { Header } from '@/app/components/Header';
 import { SearchBar } from '@/app/components/SearchBar';
-import { getStudents, getTeachers } from '@/lib/firebase';
+import { getStudents, getTeachers } from '@/lib/api';
 import { Teacher, Student } from '@/lib/types';
 import { useParams } from 'next/navigation';
 import LoadingScreen from '@/app/components/LoadingScreen';
@@ -27,12 +27,9 @@ export default function StudentsPage() {
 	useEffect(() => {
 		const loadData = async () => {
 			const [studentsData, teachersData] = await Promise.all([
-				getStudents(),
+				getStudents(kelas),
 				getTeachers(),
 			]);
-			const filteredStudents = studentsData
-				.filter((s) => s.kelas == kelas)
-				.sort((a, b) => a.nama.localeCompare(b.nama));
 
 			const waliKelas = teachersData.find(
 				(t) => t.jabatan === `Wali Kelas ${kelas}`,
@@ -41,7 +38,7 @@ export default function StudentsPage() {
 			if (!waliKelas) {
 				setStudents([]);
 			} else {
-				setStudents(filteredStudents);
+				setStudents(studentsData);
 				setWalkel(waliKelas);
 			}
 

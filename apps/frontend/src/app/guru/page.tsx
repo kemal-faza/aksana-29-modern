@@ -1,6 +1,6 @@
 'use client';
 import Image from 'next/image';
-import { getTeachers } from '@/lib/firebase';
+import { getTeachers } from '@/lib/api';
 import { Footer } from '@/app/components/Footer';
 import { Header } from '@/app/components/Header';
 import { SearchBar } from '@/app/components/SearchBar';
