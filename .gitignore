@@ -36,6 +36,9 @@ dist/
 # Plan file (local only, jangan dicommit)
 PLAN.md
 
+# frontend secrets
+tsconfig.tsbuildinfo
+
 # Backend secrets
 apps/backend/.env
 apps/backend/.env.local
