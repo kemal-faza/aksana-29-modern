@@ -36,6 +36,15 @@ dist/
 # Plan file (local only, jangan dicommit)
 PLAN.md
 
+# AI agent config files (local only, jangan dicommit)
+AGENTS.md
+CLAUDE.md
+GEMINI.md
+SOUL.md
+MEMORY.md
+HEARTBEAT.md
+memory/
+
 # frontend secrets
 tsconfig.tsbuildinfo
 
