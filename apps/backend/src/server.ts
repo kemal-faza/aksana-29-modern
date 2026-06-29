@@ -1,9 +1,10 @@
-import 'dotenv/config';
+import { config as loadEnv } from 'dotenv';
 import express from 'express';
 import cors from 'cors';
 import teachersRouter from './routes/teachers.js';
 import studentsRouter from './routes/students.js';
 
+loadEnv({ path: process.env.DOTENV_CONFIG_PATH ?? '.env' });
 if (!process.env.FIREBASE_SERVICE_ACCOUNT_KEY) {
 	console.error('FIREBASE_SERVICE_ACCOUNT_KEY not set');
 	process.exit(1);
