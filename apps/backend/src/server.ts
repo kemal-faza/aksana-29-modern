@@ -1,4 +1,4 @@
-import './env';
+import './env.js';
 import express from 'express';
 import cors from 'cors';
 import teachersRouter from './routes/teachers.js';
