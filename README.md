@@ -4,16 +4,16 @@ Website Buku Tahunan (Yearbook) Angkatan 29 MAN Kapuas. Monorepo pnpm dengan Nex
 
 ## Tech Stack
 
-| Layer | Technology |
-|-------|-----------|
-| **Frontend** | Next.js 16 (App Router), React 18, TypeScript |
-| **Backend** | Express + TypeScript (ESM, pure Node) |
-| **Styling** | Tailwind CSS 3 |
-| **Database** | Firebase Firestore (via firebase-admin) |
-| **Package Manager** | pnpm (workspaces) |
-| **Icons** | React Feather |
-| **Carousel** | Swiper |
-| **Fonts** | Inter + Bebas Neue (Google Fonts) |
+| Layer               | Technology                                    |
+| ------------------- | --------------------------------------------- |
+| **Frontend**        | Next.js 16 (App Router), React 18, TypeScript |
+| **Backend**         | Express + TypeScript (ESM, pure Node)         |
+| **Styling**         | Tailwind CSS 3                                |
+| **Database**        | Firebase Firestore (via firebase-admin)       |
+| **Package Manager** | pnpm (workspaces)                             |
+| **Icons**           | React Feather                                 |
+| **Carousel**        | Swiper                                        |
+| **Fonts**           | Inter + Bebas Neue (Google Fonts)             |
 
 ## Architecture
 
@@ -92,40 +92,36 @@ FIREBASE_SERVICE_ACCOUNT_KEY=<base64-encoded-service-account-key>
 
 ## Scripts
 
-| Command | Description |
-|---------|------------|
-| `pnpm dev` | Run FE + BE concurrently |
-| `pnpm dev:fe` | Frontend dev server (next dev) |
-| `pnpm dev:be` | Backend dev server (tsx watch) |
-| `pnpm build` | Build all workspaces recursively |
-| `pnpm build:fe` | Frontend build (next build) |
-| `pnpm build:be` | Backend build (tsc) |
-| `pnpm lint` | Lint all workspaces |
+| Command                          | Description                          |
+| -------------------------------- | ------------------------------------ |
+| `pnpm dev`                       | Run FE + BE concurrently             |
+| `pnpm dev:fe`                    | Frontend dev server (next dev)       |
+| `pnpm dev:be`                    | Backend dev server (tsx watch)       |
+| `pnpm build`                     | Build all workspaces recursively     |
+| `pnpm build:fe`                  | Frontend build (next build)          |
+| `pnpm build:be`                  | Backend build (tsc)                  |
+| `pnpm lint`                      | Lint all workspaces                  |
 | `pnpm --filter <name> add <pkg>` | Add dependency to specific workspace |
 
 ## Deployment
 
 Deployed on VPS with PM2 + Nginx + Certbot.
 
-<<<<<<< HEAD
-- **Production:** [aksana.crunchy.my.id](https://aksana.crunchy.my.id) [aksana29.crunchy.my.id](https://aksana29.crunchy.my.id)
-- **Auto-deploy:** Setiap push ke `main` otomatis redeploy
-=======
 ### PM2 Processes
 
-| Process | App | Port |
-|---------|-----|------|
-| `aksana-fe` | Frontend (production) | 3000 |
-| `aksana-fe-staging` | Frontend (staging) | 3001 |
-| `aksana-be` | Backend (production) | 4000 |
-| `aksana-be-staging` | Backend (staging) | 4001 |
+| Process             | App                   | Port |
+| ------------------- | --------------------- | ---- |
+| `aksana-fe`         | Frontend (production) | 3000 |
+| `aksana-fe-staging` | Frontend (staging)    | 3001 |
+| `aksana-be`         | Backend (production)  | 4000 |
+| `aksana-be-staging` | Backend (staging)     | 4001 |
 
 ### Domains
 
-| Environment | Frontend | Backend |
-|------------|----------|---------|
-| Production | [aksana29.crunchy.my.id](https://aksana29.crunchy.my.id) | [api.aksana29.crunchy.my.id](https://api.aksana29.crunchy.my.id) |
-| Staging | [staging.crunchy.my.id](https://staging.crunchy.my.id) | [api-staging.crunchy.my.id](https://api-staging.crunchy.my.id) |
+| Environment | Frontend                                                 | Backend                                                          |
+| ----------- | -------------------------------------------------------- | ---------------------------------------------------------------- |
+| Production  | [aksana29.crunchy.my.id](https://aksana29.crunchy.my.id) | [api.aksana29.crunchy.my.id](https://api.aksana29.crunchy.my.id) |
+| Staging     | [staging.crunchy.my.id](https://staging.crunchy.my.id)   | [api-staging.crunchy.my.id](https://api-staging.crunchy.my.id)   |
 
 ### Deploy Flow
 
@@ -135,4 +131,3 @@ pnpm install
 pnpm build
 pm2 restart aksana-fe aksana-be --update-env
 ```
->>>>>>> 76d5b88 (docs: update README.md to reflect current monorepo structure)
