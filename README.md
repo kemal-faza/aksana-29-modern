@@ -1,44 +1,62 @@
-# Aksana 29 - Buku Tahunan MAN Kapuas
+# Aksana 29 — Buku Tahunan MAN Kapuas
 
-Website Buku Tahunan (Yearbook) Angkatan 29 MAN Kapuas. Dibangun dengan Next.js 16 App Router dan Firebase.
+Website Buku Tahunan (Yearbook) Angkatan 29 MAN Kapuas. Monorepo pnpm dengan Next.js 16 App Router (frontend) dan Express REST API (backend).
 
 ## Tech Stack
 
-- **Framework:** Next.js 16 (App Router)
-- **UI Library:** React 18
-- **Bahasa:** TypeScript
-- **Styling:** Tailwind CSS 3
-- **Database & Auth:** Firebase (Firestore + Authentication)
-- **Icons:** React Feather
-- **Font:** Inter + Bebas Neue (Google Fonts)
+| Layer | Technology |
+|-------|-----------|
+| **Frontend** | Next.js 16 (App Router), React 18, TypeScript |
+| **Backend** | Express + TypeScript (ESM, pure Node) |
+| **Styling** | Tailwind CSS 3 |
+| **Database** | Firebase Firestore (via firebase-admin) |
+| **Package Manager** | pnpm (workspaces) |
+| **Icons** | React Feather |
+| **Carousel** | Swiper |
+| **Fonts** | Inter + Bebas Neue (Google Fonts) |
 
-## Struktur Folder
+## Architecture
 
 ```
-src/
-  app/           # Next.js App Router pages
-    components/  # Shared UI components
-    galeri/      # Galeri page
-    guru/        # Teachers directory page
-    pesdik/      # Students directory page
-lib/             # Utility functions & Firebase config
-public/
-  data/          # Static data files
-  img/           # Public images
+aksana-29-modern/
+  apps/
+    frontend/       # Next.js 16 App Router (server components by default)
+      src/
+        app/        # Pages & layout (/, /guru, /pesdik/[kelas], /galeri)
+        lib/        # API client, types, utilities
+        assets/     # Static assets
+      public/
+        data/       # Static data files (sambutan.json)
+        img/        # Public images (guru/, pesdik/)
+    backend/        # Express + TypeScript REST API
+      src/
+        routes/     # API routes (/api/teachers, /api/students, /health)
+        config/     # Firebase admin init, env loading
+  packages/
+    shared/         # TypeScript types (shared between FE & BE)
 ```
 
-## Cara Menjalankan di Local
+## Prerequisites
+
+- Node.js >= 18
+- pnpm >= 10
+
+## Getting Started
 
 ```bash
 # Clone
 git clone git@github.com:kemal-faza/aksana-29-modern.git
 cd aksana-29-modern
 
-# Install dependencies
-npm install
+# Install dependencies (all workspaces)
+pnpm install
 
-# Run development server
-npm run dev
+# Run both frontend + backend concurrently
+pnpm dev
+
+# Or run individually
+pnpm dev:fe   # Frontend only (localhost:3000)
+pnpm dev:be   # Backend only (localhost:4000)
 ```
 
 Buka [http://localhost:3000](http://localhost:3000).
@@ -46,26 +64,75 @@ Buka [http://localhost:3000](http://localhost:3000).
 ## Build
 
 ```bash
-npm run build
-npm start
+# Build all workspaces
+pnpm build
+
+# Build individually
+pnpm build:fe   # Frontend (next build)
+pnpm build:be   # Backend (tsc)
 ```
 
 ## Environment Variables
 
-Copy `.env.local` dari template:
+### Frontend (`apps/frontend/.env.local`)
 
 ```env
-NEXT_PUBLIC_FIREBASE_API_KEY=
-NEXT_PUBLIC_FIREBASE_AUTH_DOMAIN=
-NEXT_PUBLIC_FIREBASE_PROJECT_ID=
-NEXT_PUBLIC_FIREBASE_STORAGE_BUCKET=
-NEXT_PUBLIC_FIREBASE_MESSAGING_SENDER_ID=
-NEXT_PUBLIC_FIREBASE_APP_ID=
+NEXT_PUBLIC_API_URL=http://localhost:4000
 ```
+
+### Backend (`apps/backend/.env`)
+
+```env
+PORT=4000
+CORS_ORIGIN=http://localhost:3000
+FIREBASE_SERVICE_ACCOUNT_KEY=<base64-encoded-service-account-key>
+```
+
+> **Note:** `FIREBASE_SERVICE_ACCOUNT_KEY` is a base64-encoded Firebase service account JSON. Generate with: `base64 -w0 sa.json`. Get `sa.json` from Firebase Console > Project Settings > Service Accounts > Generate new key.
+
+## Scripts
+
+| Command | Description |
+|---------|------------|
+| `pnpm dev` | Run FE + BE concurrently |
+| `pnpm dev:fe` | Frontend dev server (next dev) |
+| `pnpm dev:be` | Backend dev server (tsx watch) |
+| `pnpm build` | Build all workspaces recursively |
+| `pnpm build:fe` | Frontend build (next build) |
+| `pnpm build:be` | Backend build (tsc) |
+| `pnpm lint` | Lint all workspaces |
+| `pnpm --filter <name> add <pkg>` | Add dependency to specific workspace |
 
 ## Deployment
 
-Deployed di Digital Ocean App Platform.
+Deployed on VPS with PM2 + Nginx + Certbot.
 
+<<<<<<< HEAD
 - **Production:** [aksana.crunchy.my.id](https://aksana.crunchy.my.id) [aksana29.crunchy.my.id](https://aksana29.crunchy.my.id)
 - **Auto-deploy:** Setiap push ke `main` otomatis redeploy
+=======
+### PM2 Processes
+
+| Process | App | Port |
+|---------|-----|------|
+| `aksana-fe` | Frontend (production) | 3000 |
+| `aksana-fe-staging` | Frontend (staging) | 3001 |
+| `aksana-be` | Backend (production) | 4000 |
+| `aksana-be-staging` | Backend (staging) | 4001 |
+
+### Domains
+
+| Environment | Frontend | Backend |
+|------------|----------|---------|
+| Production | [aksana29.crunchy.my.id](https://aksana29.crunchy.my.id) | [api.aksana29.crunchy.my.id](https://api.aksana29.crunchy.my.id) |
+| Staging | [staging.crunchy.my.id](https://staging.crunchy.my.id) | [api-staging.crunchy.my.id](https://api-staging.crunchy.my.id) |
+
+### Deploy Flow
+
+```bash
+git pull
+pnpm install
+pnpm build
+pm2 restart aksana-fe aksana-be --update-env
+```
+>>>>>>> 76d5b88 (docs: update README.md to reflect current monorepo structure)
