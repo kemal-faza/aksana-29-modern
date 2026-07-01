@@ -67,5 +67,5 @@ NEXT_PUBLIC_FIREBASE_APP_ID=
 
 Deployed di Digital Ocean App Platform.
 
-- **Production:** [aksana.crunchy.my.id](https://aksana.crunchy.my.id)
+- **Production:** [aksana.crunchy.my.id](https://aksana.crunchy.my.id) [aksana29.crunchy.my.id](https://aksana29.crunchy.my.id)
 - **Auto-deploy:** Setiap push ke `main` otomatis redeploy
